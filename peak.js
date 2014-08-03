@@ -1,9 +1,7 @@
 function peak(arr) {
   return arr.length === 3 ? (function() {
-    if (arr[0] >== arr[1] && arr[0] >== arr[2]) {
-      return arr[0]
-    } 
-  })() : arr.length === 2 ? (function()
+   
+  })() : arr.length === 2 ? (function(){})() : arr[0];
 }
 
-peak([0,1])
+console.log(peak([]));
