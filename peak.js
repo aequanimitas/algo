@@ -4,7 +4,7 @@ function peak(arr) {
   }
   var mid = parseInt(arr.length / 2);
   if (arr[mid] < arr[mid - 1]) {
-    return peak(arr.slice(0, mid-1))
+    return peak(arr.slice(0, mid - 1))
   } else if (arr[mid] < arr[mid + 1]) { 
     return peak(arr.slice(mid, arr.len));
   } else {
