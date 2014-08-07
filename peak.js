@@ -1,12 +1,8 @@
 var substruct_size_limit = 2,
       left_side = 0,
       right_side = 1,
-      operation_counter = 0;
-
-     
-function peak(arr){
-  return finder(arr);
-}
+      operation_counter = 0,
+      lolarr = [];
 
 function finder(arr) {
   operation_counter += 1;
@@ -25,24 +21,20 @@ function finder(arr) {
       return arr[left_side]
     }
 }
-var lolarr = [];
 
 for (var x = 0; x < 1000000; x += 1) {
   lolarr.push(x);
 }
-var starttime = +Date.now();
-console.log(peak(lolarr));
-var endtime = +Date.now();
-console.log('Time took: ' + ((endtime - starttime) / 100) + ' seconds');
-console.log('Array sorted with length of: ' + lolarr.length);
 
+function run(fn) {
+  console.log("Runtime evaluation for: " + fn.name);
+  console.log("Operation Counter: " + operation_counter);
+  var new_starttime = +Date.now();
+  console.log(fn(lolarr));
+  var new_endtime = +Date.now();
+  console.log('Time took: ' + ((new_endtime - new_starttime) / 100) + ' seconds');
+  console.log("Operation Counter: " + operation_counter);
+  operation_counter = 0;
+}
 
-console.log("Operation Counter: " + operation_counter);
-operation_counter = 0;
-console.log("Directly call finder fn");
-var new_starttime = +Date.now();
-console.log(finder(lolarr))
-var new_endtime = +Date.now();
-
-console.log("Operation Counter: " + operation_counter);
-console.log('Time took: ' + ((new_endtime - new_starttime) / 100) + ' seconds');
+run(finder);
