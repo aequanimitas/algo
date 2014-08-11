@@ -4,7 +4,16 @@ var substruct_size_limit = 2,
       operation_counter = 0,
       lolarr = [];
 
-function finder(arr) {
+function algo1_brute_force(arr) {
+  var max = 0;
+  for (var i = 0; i < arr.length; i += 1) {
+    operation_counter += 1;
+    if (arr[i] >= max) max = arr[i];
+  }
+  return max;
+}
+
+function algo3_dac(arr) {
   operation_counter += 1;
   var mid = arr.length / 2,
       mid_to_the_left = mid - 1,
@@ -14,9 +23,9 @@ function finder(arr) {
     }
     var mid = parseInt(arr.length / 2);
     if (arr[mid] < arr[mid - 1]) {
-      return finder(arr.slice(0, mid - 1))
+      return algo3_dac(arr.slice(0, mid - 1))
     } else if (arr[mid] < arr[mid + 1]) { 
-      return finder(arr.slice(mid, arr.len));
+      return algo3_dac(arr.slice(mid, arr.len));
     } else {
       return arr[left_side]
     }
@@ -27,14 +36,17 @@ for (var x = 0; x < 1000000; x += 1) {
 }
 
 function run(fn) {
+  console.log("\n");
   console.log("Runtime evaluation for: " + fn.name);
-  console.log("Operation Counter: " + operation_counter);
   var new_starttime = +Date.now();
-  console.log(fn(lolarr));
+  console.log("Max: " + fn(lolarr));
   var new_endtime = +Date.now();
+  console.log("Operation Counter: " + operation_counter);
   console.log('Time took: ' + ((new_endtime - new_starttime) / 100) + ' seconds');
   console.log("Operation Counter: " + operation_counter);
   operation_counter = 0;
 }
 
-run(finder);
+run(algo3_dac);
+run(algo1_brute_force);
+
