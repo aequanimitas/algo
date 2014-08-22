@@ -5,12 +5,16 @@ function isort(arr, log, fn_order) {
 }
 
 function ascending(arr) {
-  var j, i, k = 0;
   for (var ct = 0; ct < arr.length; ct += 1) {
-    j = ct + 1;
-    i = ct;
-    swap_til_it_drops(arr,i,j,decrement);
+    swap_til_it_drops(arr,ct,increment(ct),decrement);
   }
+  return arr;
+}
+
+function descending(arr) {
+  for (var ct = arr.length; ct >= 0; ct -= 1) {
+    swap_til_it_drops(arr,ct,decrement(ct),increment);
+  } 
   return arr;
 }
 
@@ -33,19 +37,7 @@ function swap_til_it_drops(arr, i, j, next) {
   }
 }
 
-function descending(arr) {
-  var i,j,k = 0;
-  for (var ct = arr.length; ct >= 0; ct -= 1) {
-    j = ct - 1;
-    i = ct;
-    swap_til_it_drops(arr,i,j,increment);
-  } 
-  return arr;
-}
-
 console.log([219,132,99,102,88,103]);
-
+console.log("\n");
 isort([219,132,99,102,88,103], console.log, ascending);
 isort([219,132,99,102,88,103], console.log, descending);
-
-
