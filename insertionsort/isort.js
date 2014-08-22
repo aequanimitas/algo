@@ -9,15 +9,28 @@ function ascending(arr) {
   for (var ct = 0; ct < arr.length; ct += 1) {
     j = ct + 1;
     i = ct;
-    while ((i >= 0) && (arr[i] > arr[j])) {
-      k = arr[j];
-      arr[j] = arr[i];
-      arr[i] = k;
-      i -= 1;
-      j -= 1;
-    }
+    swap_til_it_drops(arr,i,j,decrement);
   }
   return arr;
+}
+
+function increment(x) {
+  return x + 1;
+}
+
+function decrement(x) {
+  return x - 1;
+}
+
+function swap_til_it_drops(arr, i, j, next) {
+  if ((i >= 0) && (arr[i] > arr[j])) {
+    var k = arr[j]
+    arr[j] = arr[i];
+    arr[i] = k;
+    swap_til_it_drops(arr, next(i), next(j), next);
+  } else {
+    return arr;
+  }
 }
 
 function descending(arr) {
@@ -25,13 +38,7 @@ function descending(arr) {
   for (var ct = arr.length; ct >= 0; ct -= 1) {
     j = ct - 1;
     i = ct;
-    while ((i >= 0) && (arr[i] > arr[j])) {
-      k = arr[j];
-      arr[j] = arr[i];
-      arr[i] = k;
-      i -= 1;
-      j -= 1;
-    }
+    swap_til_it_drops(arr,i,j,increment);
   } 
   return arr;
 }
