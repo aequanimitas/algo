@@ -22,6 +22,15 @@ function increment(x) {
   return x + 1;
 }
 
+function already_sorted(arr) {
+  var ct = arr.length;
+  while (ct >= 0) {
+    if (arr[ct] < arr[ct-1]) return false;
+    ct -= 1; 
+  }    
+  return true;
+}
+
 function decrement(x) {
   return x - 1;
 }
@@ -41,3 +50,6 @@ console.log([219,132,99,102,88,103]);
 console.log("\n");
 isort([219,132,99,102,88,103], console.log, ascending);
 isort([219,132,99,102,88,103], console.log, descending);
+
+console.log(already_sorted([1,2,3,4,5,6]));
+console.log(already_sorted([219,132,99,102,88,103]));
