@@ -10,21 +10,20 @@
 
 (define (fib-i-02 n)
   (define (iter x y z)
-    (newline)
-    (display "Current term: ")
-    (display y)
-    (newline)
-    (display "Next term: ")
-    (display x)
-    (newline)
-    (display "Counter: ")
-    (display z)
-    (newline)
     (if (= z 0)
         y
         (iter (+ x y) x (- z 1))))
   (iter 1 0 n))
 
-; (= (fib-r 9) (fib-i-02 9))
+(= (fib-r 9) (fib-i-02 9))
 
 (fib-i-02 999)
+
+(define (fib-accumulate limit)
+  (define (iter a b c step accu)
+    (cond ((> a limit) accu)
+          ((even? a) (iter (+ a b) a (step c) step (+ accu a)))
+          (else (iter (+ a b) a (step c) step accu)))) 
+  (iter 1 0 0 (lambda (x) (- x 1)) 0)) 
+
+(fib-accumulate 4000000)
