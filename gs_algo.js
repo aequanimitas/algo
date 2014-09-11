@@ -17,9 +17,21 @@ function all_men_free(m,ct) {
   if (ct === m.length) {
     return false;
   } else {
-    if (m[ct].stat === "free") return true;
+    if (no_movement_yet(m[ct])) return true;
     all_men_free(m, ct += 1);
   }
+}
+
+function no_movement_yet(m) {
+  return man_free(m) && man_hasnt_proposed(m);
+}
+
+function man_hasnt_proposed(m) {
+  return m.has_proposed;
+}
+
+function man_free(m) {
+  return m.stat == "free";
 }
 
 console.log(all_men_free(M_SET, 0));
