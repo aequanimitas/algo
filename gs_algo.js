@@ -6,11 +6,12 @@
   }
   
   var M_SET = [], W_SET = [], M_SET_MARRIED = [];
-  M_SET.push(new H(["w3","w1","w2"],"m1"));
-  M_SET.push(new H(["w2","w1","w3"],"m2"));
-  M_SET.push(new H(["w2","w3","w1"],"m3"));  
-  W_SET.push(new H(["m3","m1","m2"],"w1"));
-  W_SET.push(new H(["m2","m1","m3"],"w2"));
-  W_SET.push(new H(["m2","m3","m1"],"w3"));
+  M_SET.push(new H(["w1","w2"],"m1"));
+  M_SET.push(new H(["w2","w1"],"m2"));
+  W_SET.push(new H(["m1","m2"],"w1"));
+  W_SET.push(new H(["m2","m1"],"w2"));
 
+  while (M_SET.length > 0) {
+    M_SET.pop();
+  }
 })();
