@@ -1,3 +1,4 @@
+-- algo design manual
 increment :: Integer -> Integer
 increment x
   |x == 0      = 1
